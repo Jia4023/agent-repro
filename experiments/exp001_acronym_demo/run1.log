@@ -1,0 +1,98 @@
+0 INIT> Using language models of code for few-shot commonsense
+0 GEN> CoCo TITLE> Using language models of code for few-shot commonsense
+0 SCORES> * Ease of pronunciation: CoCo is pronounced "ko-ko". This is very easy to pronounce. 5/5
+* Ease of spelling: CoCo is easy to spell. 5/5
+* Relation to title: CoCo can stand for "Code Commonsense", directly reflecting key terms in the title. 5/5
+* Positive connotation: CoCo has a positive, friendly connotation. 5/5
+* Well-known: CoCo is a well-known word/name, though not a standard acronym for this title. 4/5
+
+* Total score: 24/25
+1 GEN> COCO TITLE> Using language models of code for few-shot commonsense
+1 SCORES> * Ease of pronunciation: COCO is pronounced "ko-ko". This is very easy to pronounce. 5/5
+* Ease of spelling: COCO is easy to spell. 5/5
+* Relation to title: COCO can be interpreted as "COde COmmonsense", which relates to the code and commonsense parts of the title, though it misses language models and few-shot. 4/5
+* Positive connotation: COCO has a friendly, positive connotation, evoking coconut or a familiar name. 4/5
+* Well-known: COCO is a well-known acronym/name, including the COCO dataset in machine learning. 4/5
+
+* Total score: 22/25
+2 GEN> CODEX TITLE> Using language models of code for few-shot commonsense
+2 SCORES> * Ease of pronunciation: CODEX is pronounced "koh-deks". This is an easy acronym to pronounce. 5/5
+* Ease of spelling: CODEX is easy to spell. 5/5
+* Relation to title: CODEX evokes "code", which is related to the title's language models of code, though it does not directly cover few-shot commonsense. 4/5
+* Positive connotation: CODEX is a positive acronym. It suggests a body of knowledge or a code resource. 4/5
+* Well-known: CODEX is a well-known word and acronym, especially in AI and code contexts. 5/5
+
+* Total score: 23/25
+3 GEN> CLICK TITLE> Using language models of code for few-shot commonsense
+3 SCORES> * Ease of pronunciation: CLICK is pronounced "klik". This is an easy acronym to pronounce. 5/5
+* Ease of spelling: CLICK is easy to spell. 5/5
+* Relation to title: CLICK stands for "Code Language models for In-Context Commonsense Knowledge", which is directly related to the title. 5/5
+* Positive connotation: CLICK is a positive acronym. It implies understanding, connection, or success. 5/5
+* Well-known: CLICK is a well-known word, though not a widely established acronym. 4/5
+
+* Total score: 24/25
+An error occurred: list index out of range. Traceback (most recent call last):
+  File "/home/ubuntu/repos/self-refine/src/utils.py", line 39, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ubuntu/repos/self-refine/src/acronym/run.py", line 47, in iterative_acronym
+    new_title, acronym = task_iterate(acronyms_to_scores=acronyms_to_scores)
+  File "/home/ubuntu/repos/self-refine/src/acronym/task_iterate.py", line 120, in __call__
+    acronym = response.split("Acronym:")[1].strip().split("\n")[0].strip()
+IndexError: list index out of range
+. Left retries: 2.
+0 INIT> Using language models of code for few-shot commonsense
+An error occurred: list index out of range. Traceback (most recent call last):
+  File "/home/ubuntu/repos/self-refine/src/utils.py", line 39, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ubuntu/repos/self-refine/src/acronym/run.py", line 45, in iterative_acronym
+    acronym = task_init(title=title)
+  File "/home/ubuntu/repos/self-refine/src/acronym/task_init.py", line 53, in __call__
+    generated_acronym = generated_acronym.split(self.answer_prefix)[1].replace("#", "").strip()
+IndexError: list index out of range
+. Left retries: 1.
+0 INIT> Using language models of code for few-shot commonsense
+0 GEN> CICERO TITLE> Using language models of code for few-shot commonsense
+0 SCORES> * Ease of pronunciation: CICERO is pronounced "sis-er-oh". This is an easy acronym to pronounce. 5/5
+* Ease of spelling: CICERO is easy to spell. 5/5
+* Relation to title: CICERO has no clear relation to the title. It does not encode the words of the title. 1/5
+* Positive connotation: CICERO is a positive name/acronym. It evokes the Roman orator and suggests eloquence or wisdom. 4/5
+* Well-known: CICERO is a well-known name/word. 5/5
+
+* Total score: 20/25
+1 GEN> CLICK TITLE> Using language models of code for few-shot commonsense
+1 SCORES> * Ease of pronunciation: CLICK is pronounced "klik". This is a very easy acronym to pronounce. 5/5
+* Ease of spelling: CLICK is easy to spell. 5/5
+* Relation to title: CLICK can stand for "Code Language In-Context Commonsense Knowledge", which is related to language models of code, few-shot learning, and commonsense. 4/5
+* Positive connotation: CLICK is a positive acronym. It implies understanding, success, or things falling into place. 5/5
+* Well-known: CLICK is a well-known word. 4/5
+
+* Total score: 23/25
+2 GEN> CLICKS TITLE> Using language models of code for few-shot commonsense
+2 SCORES> * Ease of pronunciation: CLICKS is pronounced "clicks". This is an easy acronym to pronounce. 5/5
+* Ease of spelling: CLICKS is easy to spell. 5/5
+* Relation to title: CLICKS can be read as "Code Language Intelligence for Commonsense Knowledge and Skills", which relates to code, language, and commonsense in the title. 4/5
+* Positive connotation: CLICKS is a positive acronym. It suggests things clicking into place or success. 4/5
+* Well-known: CLICKS is a well-known word. 4/5
+
+* Total score: 22/25
+3 GEN> CLEAR TITLE> Using language models of code for few-shot commonsense
+3 SCORES> * Ease of pronunciation: CLEAR is pronounced "clear". This is an easy acronym to pronounce. 5/5
+* Ease of spelling: CLEAR is easy to spell. 5/5
+* Relation to title: CLEAR does not directly mention language models, code, few-shot, or commonsense. It is only loosely related as a positive word. 1/5
+* Positive connotation: CLEAR is a positive acronym. It implies clarity and understanding. 5/5
+* Well-known: CLEAR is a well-known word and common acronym. 4/5
+
+* Total score: 20/25
+An error occurred: list index out of range. Traceback (most recent call last):
+  File "/home/ubuntu/repos/self-refine/src/utils.py", line 39, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ubuntu/repos/self-refine/src/acronym/run.py", line 47, in iterative_acronym
+    new_title, acronym = task_iterate(acronyms_to_scores=acronyms_to_scores)
+  File "/home/ubuntu/repos/self-refine/src/acronym/task_iterate.py", line 120, in __call__
+    acronym = response.split("Acronym:")[1].strip().split("\n")[0].strip()
+IndexError: list index out of range
+. Left retries: 0.
+Traceback (most recent call last):
+  File "/home/ubuntu/repos/self-refine/src/acronym/run.py", line 111, in <module>
+    for acronym, scores in all_acronyms_to_scores.items():
+AttributeError: 'NoneType' object has no attribute 'items'
