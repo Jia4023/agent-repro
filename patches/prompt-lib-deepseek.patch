@@ -1,0 +1,30 @@
+diff --git a/prompt_lib/backends/anthropic_api.py b/prompt_lib/backends/anthropic_api.py
+index bb229f3..9a6edb0 100644
+--- a/prompt_lib/backends/anthropic_api.py
++++ b/prompt_lib/backends/anthropic_api.py
+@@ -8,7 +8,7 @@ import requests
+ from prompt_lib.backends.wrapper import BaseAPIWrapper
+ 
+ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "Your_Default_Value")
+-client = anthropic.Client(ANTHROPIC_API_KEY)
++client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+ 
+ 
+ class AnthropicAPIWrapper(BaseAPIWrapper):
+diff --git a/prompt_lib/backends/openai_api.py b/prompt_lib/backends/openai_api.py
+index 2d79588..005c4df 100644
+--- a/prompt_lib/backends/openai_api.py
++++ b/prompt_lib/backends/openai_api.py
+@@ -268,7 +268,11 @@ class ChatGPTAPIWrapper(BaseAPIWrapper):
+ 
+ 
+ class OpenaiAPIWrapper:
+-    chat_engines = ["gpt-3.5-turbo", "gpt-4", "gpt-3.5-turbo-0316", "gpt-4-0613", "gpt-3.5-turbo-0613"]
++    chat_engines = [
++        "gpt-3.5-turbo", "gpt-4", "gpt-3.5-turbo-0316", "gpt-4-0613", "gpt-3.5-turbo-0613",
++        # opencode.ai 中转站支持的模型家族，全部走 chat completions 接口
++        "deepseek", "glm", "qwen", "kimi", "grok", "minimax", "longcat", "mimo", "hy3", "hy4", "muse", "omen",
++    ]
+ 
+     opensource_engines = ["self-vulcan-13b", "self-vicuna-13b", "togethercomputer/llama-2-70b"]
+ 

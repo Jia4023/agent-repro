@@ -1,0 +1,94 @@
+diff --git a/src/acronym/feedback.py b/src/acronym/feedback.py
+index 5d3d7d6..afbeab4 100644
+--- a/src/acronym/feedback.py
++++ b/src/acronym/feedback.py
+@@ -5,7 +5,7 @@ from src.utils import Prompt
+ 
+ 
+ class AcronymGenFeedback(Prompt):
+-    def __init__(self, engine: str, prompt_examples: str, max_tokens: int = 300) -> None:
++    def __init__(self, engine: str, prompt_examples: str, max_tokens: int = 8000) -> None:
+         super().__init__(
+             question_prefix="",
+             answer_prefix="",
+@@ -64,6 +64,12 @@ Here are some examples of this scoring rubric:
+             max_tokens=self.max_tokens,
+             stop_token="###",
+             temperature=0.7,
++            system_message=(
++                "You score acronyms on five traits following the rubric shown in the examples. "
++                "For the final Title/Acronym pair, output the Scores section exactly in the same format as the examples: "
++                "start with the line 'Scores:', list the five '* Trait: ...' bullet lines each with a rating out of 5 "
++                "and a short justification, and end with '* Total score: X/25'."
++            ),
+         )
+         
+         generated_feedback = openai_api.OpenaiAPIWrapper.get_first_response(output)
+diff --git a/src/acronym/run.py b/src/acronym/run.py
+index 47276cb..703949a 100644
+--- a/src/acronym/run.py
++++ b/src/acronym/run.py
+@@ -9,7 +9,7 @@ from src.utils import retry_parse_fail_prone_cmd
+ 
+ CODEX = "code-davinci-002"
+ GPT3 = "text-davinci-003"
+-CHAT_GPT = "gpt-3.5-turbo"
++CHAT_GPT = "deepseek-v4.1-flash"
+ GPT4 = "gpt-4"
+ 
+ 
+diff --git a/src/acronym/task_init.py b/src/acronym/task_init.py
+index 93a01da..95e21f8 100644
+--- a/src/acronym/task_init.py
++++ b/src/acronym/task_init.py
+@@ -37,9 +37,13 @@ Acronym: {answer}"""
+         output = openai_api.OpenaiAPIWrapper.call(
+             prompt=generation_query,
+             engine=self.engine,
+-            max_tokens=300,
++            max_tokens=8000,
+             stop_token="###",
+             temperature=0.7,
++            system_message=(
++                "You are doing a few-shot pattern-completion task. The examples show Title/Acronym pairs. "
++                "For the final Title, respond with exactly one line of the form 'Acronym: XXX' and nothing else."
++            ),
+         )
+ 
+         generated_acronym = openai_api.OpenaiAPIWrapper.get_first_response(output)
+diff --git a/src/acronym/task_iterate.py b/src/acronym/task_iterate.py
+index 8f59d82..e025aea 100644
+--- a/src/acronym/task_iterate.py
++++ b/src/acronym/task_iterate.py
+@@ -105,11 +105,17 @@ Okay, let's use this feedback to improve the acronym.
+         output = openai_api.OpenaiAPIWrapper.call(
+             prompt=transfer_query,
+             engine=self.engine,
+-            max_tokens=300,
++            max_tokens=8000,
+             stop_token=self.inter_example_sep,
+             temperature=0.7,
++            system_message=(
++                "Continue the few-shot examples for iteratively improving acronyms. "
++                "Given the latest acronym and its scores, respond with an improved version: "
++                "a line 'Title: <improved title>' followed by a line 'Acronym: <improved acronym>', and nothing else."
++            ),
+         )
+         response = openai_api.OpenaiAPIWrapper.get_first_response(output)
++        print(f"DEBUG count={self.count} 原始回复={response!r}")
+ 
+         
+         acronym = response.split("Acronym:")[1].strip().split("\n")[0].strip()
+diff --git a/src/gsm/run.py b/src/gsm/run.py
+index 4336fc1..f5e2276 100644
+--- a/src/gsm/run.py
++++ b/src/gsm/run.py
+@@ -9,7 +9,7 @@ from src.utils import retry_parse_fail_prone_cmd
+ 
+ CODEX = "code-davinci-002"
+ # GPT3 = "text-davinci-003"
+-ENGINE = CODEX
++ENGINE = "deepseek-v4.1-flash"     #CODEX
+ 
+ 
+ @retry_parse_fail_prone_cmd
