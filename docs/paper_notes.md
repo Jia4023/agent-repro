@@ -27,7 +27,7 @@ break（反馈出现 "it is correct" 就停），max_attempts 还是命令行参
 我现在的答案：取决于这个任务**有没有客观的对错信号**（论文 §2 原话：
 "the condition is determined per-task"）。
   - GSM 有唯一正确答案 → 反馈里能出现"答对了"这种明确信号 → 可以提前 break
-  - acronym 是开放式生成（缩写），只能打 0~25 分，没有"对/错" → 设不了可靠的
+  - acronym 是首字母缩写词生成，只能打 0~25 分，没有"对/错" → 设不了可靠的
     停止条件 → 只能固定跑 5 轮
 同一个原因还决定了另一件事：GSM 能自动算准确率，acronym 只能靠人工盲评或
 GPT-4 当裁判（§3.2 + Appendix C）——所以 acronym 适合跑通流程，GSM 适合复现数字。
