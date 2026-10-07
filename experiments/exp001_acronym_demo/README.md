@@ -37,7 +37,8 @@ PYTHONPATH=.:prompt-lib .venv/bin/python -u src/acronym/run.py "Using language m
 三个问题：
 
 1. 分数没有单调上升（23 → 23 → 22 → 20 → 23）
-2. 模型偶尔返回空字符串 → 解析失败 → 靠官方重试机制兜住
+2. 模型偶尔返回空字符串 → 解析失败 → 靠官方重试机制兜住。
+   **原因**：这个模型是思考型，推理过程会吃光 token 预算，正文返回空（详见根目录 `debug_log.md`）
 3. 重试 3 次全失败时脚本崩溃（`run1.log` 就是这样）
 
 详见 `run1.log` 和仓库根目录 `debug_log.md`。
