@@ -89,4 +89,6 @@ PYTHONPATH=.:prompt-lib .venv/bin/python -u src/acronym/run.py "Using language m
 
 ## API 花费
 
-（待填）
+中转站（opencode.ai）按量计费，本机看不到账单。本次全部实验（acronym demo + GSM 20 题跑了 6 次 + 两次 3 题验证）的日志合计约 **1.7 MB** 文本，按 4 字符/token 粗估在 **10 万～40 万 token** 量级（日志里含报错堆栈，所以这是上界）。
+
+**无法给出准确金额**——这也是我「仍然不知道」的一件事（见 `REPORT.md`）。
