@@ -80,7 +80,7 @@ index 8f59d82..e025aea 100644
          
          acronym = response.split("Acronym:")[1].strip().split("\n")[0].strip()
 diff --git a/src/gsm/feedback.py b/src/gsm/feedback.py
-index 7e43f18..589c5c8 100644
+index 7e43f18..b719035 100644
 --- a/src/gsm/feedback.py
 +++ b/src/gsm/feedback.py
 @@ -5,7 +5,7 @@ from src.utils import Prompt
@@ -92,7 +92,13 @@ index 7e43f18..589c5c8 100644
          super().__init__(
              question_prefix="",
              answer_prefix="",
-@@ -41,6 +41,10 @@ class GSMFeedback(Prompt):
+@@ -37,10 +37,16 @@ class GSMFeedback(Prompt):
+         
+         
+         entire_output = openai_api.OpenaiAPIWrapper.get_first_response(output)
++        if entire_output is None:
++            raise ValueError("模型返回的 content 是 null")
+         print(entire_output)
          if "### END" in entire_output:
              entire_output = entire_output.split("### END")[0]
  
@@ -104,7 +110,7 @@ index 7e43f18..589c5c8 100644
          feedback = entire_output.split("def solution():")[0]
          improved_soln = "def solution():" + improved_soln.rstrip()
 diff --git a/src/gsm/run.py b/src/gsm/run.py
-index 4336fc1..f5e2276 100644
+index 4336fc1..22ffac5 100644
 --- a/src/gsm/run.py
 +++ b/src/gsm/run.py
 @@ -9,7 +9,7 @@ from src.utils import retry_parse_fail_prone_cmd
@@ -112,7 +118,27 @@ index 4336fc1..f5e2276 100644
  CODEX = "code-davinci-002"
  # GPT3 = "text-davinci-003"
 -ENGINE = CODEX
-+ENGINE = "deepseek-v4.1-flash"     #CODEX
++ENGINE = "glm-5.3-flash"     #CODEX
  
  
  @retry_parse_fail_prone_cmd
+diff --git a/src/gsm/task_init.py b/src/gsm/task_init.py
+index 058a3c8..38f0d56 100644
+--- a/src/gsm/task_init.py
++++ b/src/gsm/task_init.py
+@@ -30,12 +30,14 @@ class GSMInit(Prompt):
+         output = openai_api.OpenaiAPIWrapper.call(
+             prompt=generation_query,
+             engine=self.engine,
+-            max_tokens=300,
++            max_tokens=8000,
+             stop_token=self.inter_example_sep,
+             temperature=self.temperature,
+         )
+ 
+         solution_code = openai_api.OpenaiAPIWrapper.get_first_response(output)
++        if solution_code is None:
++            raise ValueError("模型返回的 content 是 null")
+ 
+         return solution_code.strip()
+ 

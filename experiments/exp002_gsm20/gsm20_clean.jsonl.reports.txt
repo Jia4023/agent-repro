@@ -1,0 +1,41 @@
+Report 1:
+
+Previous solution:
+def solution():
+    """Carla is downloading a 200 GB file. Normally she can download 2 GB/minute, but 40% of the way through the download, Windows forces a restart to install updates, which takes 20 minutes. Then Carla has to restart the download from the beginning. How long does it take to download the file?"""
+    file_size = 200
+    download_speed = 2  # GB per minute
+    restart_point = 0.4  # 40% of the way through
+    restart_time = 20  # minutes for the update
+
+Feedback:
+# Let us go through the error and check step-by-step
+
+    file_size = 200
+    download_speed = 2  # GB per minute
+    restart_point = 0.4  # 40% of the way through
+    restart_time = 20  # minutes for the update
+# looks good
+
+# Let's check the other parts
+# wrong! The code is incomplete. We need to calculate the time for the first (partial) download attempt, add the restart time, and then add the time for the full download from the beginning.
+
+Okay! Here is the rewrite:
+
+
+
+Next solution:
+def solution():
+    """Carla is downloading a 200 GB file. Normally she can download 2 GB/minute, but 40% of the way through the download, Windows forces a restart to install updates, which takes 20 minutes. Then Carla has to restart the download from the beginning. How long does it take to download the file?"""
+    file_size = 200
+    download_speed = 2  # GB per minute
+    restart_point = 0.4  # 40% of the way through
+    restart_time = 20  # minutes for the update
+    first_download_time = (file_size * restart_point) / download_speed
+    full_download_time = file_size / download_speed
+    total_time = first_download_time + restart_time + full_download_time
+    result = total_time
+    return result
+
+================================================================================
+

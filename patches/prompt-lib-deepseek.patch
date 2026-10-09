@@ -12,10 +12,18 @@ index bb229f3..9a6edb0 100644
  
  class AnthropicAPIWrapper(BaseAPIWrapper):
 diff --git a/prompt_lib/backends/openai_api.py b/prompt_lib/backends/openai_api.py
-index 2d79588..005c4df 100644
+index 2d79588..ee3d377 100644
 --- a/prompt_lib/backends/openai_api.py
 +++ b/prompt_lib/backends/openai_api.py
-@@ -268,7 +268,11 @@ class ChatGPTAPIWrapper(BaseAPIWrapper):
+@@ -29,6 +29,7 @@ def retry_with_exponential_backoff(
+     errors: tuple = (
+         openai.error.RateLimitError,
+         openai.error.ServiceUnavailableError,
++        openai.error.InvalidRequestError,
+         anthropic.RateLimitError,
+     ),
+ ):
+@@ -268,7 +269,11 @@ class ChatGPTAPIWrapper(BaseAPIWrapper):
  
  
  class OpenaiAPIWrapper:
