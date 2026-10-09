@@ -79,6 +79,17 @@ PYTHONPATH=.:prompt-lib .venv/bin/python -u src/acronym/run.py "Using language m
 | `agent_log.md` | Agent 出错记录（底线 2 要求） |
 | `AGENTS.md` | 这个项目怎么装 / 怎么跑 / 怎么测 |
 
+## 用到的 skill
+
+本周用了两个现成的 skill（任务书 7.1）：
+
+| skill | 用在哪 | 省了哪一步 |
+|---|---|---|
+| `skill-creator` | 起草 `skills/debug-silent-failures/SKILL.md` 的格式 | 省了"自己查 skill 该怎么写" |
+| `pdf` | 从论文 PDF 提取文字做笔记 | 省了自己写 PDF 提取脚本 |
+
+---
+
 ## 已知限制（为什么我的数字和论文不能直接比）
 
 1. **模型不同**：论文用 GPT-3.5 / ChatGPT / GPT-4；我只能用中转站提供的模型（最终用 `glm-5.3-flash`，之前试过 `deepseek-v4.1-flash`）。它们都是**思考型模型**（回答前先推理），行为与原论文模型差别很大。
